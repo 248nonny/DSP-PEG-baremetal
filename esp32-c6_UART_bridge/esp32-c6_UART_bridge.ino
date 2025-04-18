@@ -14,7 +14,7 @@ void loop() {
     Serial.write(Serial1.read());
   }
 
-  // Optional: echo PC commands back to Pi
+  // Echo PC commands back to Pi
   if (Serial.available()) {
     Serial1.write(Serial.read());
   }

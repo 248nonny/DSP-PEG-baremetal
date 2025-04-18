@@ -1,4 +1,6 @@
 
-kernel=kernelPEGERR.img
+kernel=kernelDSPEG.img
 
 arm_64bit=1
+
+uart_2ndstage=1
