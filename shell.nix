@@ -1,8 +1,19 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> {
+  overlays = [
+      (import (builtins.fetchTarball
+        "https://github.com/oxalica/rust-overlay/archive/refs/heads/master.tar.gz"))
+    ];
+  }
+}:
+
+let
+  rust = pkgs.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
+in
 
 pkgs.mkShell {
   buildInputs = [
-    pkgs.rustup
+    # pkgs.rustup
+    rust
     pkgs.qemu            # optional, if you want to emulate
     pkgs.gdb             # optional, for debugging
     pkgs.cargo-binutils  # for objdump, nm, etc.
